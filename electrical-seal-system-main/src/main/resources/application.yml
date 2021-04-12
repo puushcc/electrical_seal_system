@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: electrical-seal-system-main
+  profiles:
+    active: @env@
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 10MB #限制文件上传大小为10M
+
+# mybatis
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+server:
+  port: 8000
+  servlet:
+    context-path: /seal
+
+jwt:
+  secret: electrical-seal-shuhao #密钥
+  expiration: 604800 #超期限时间(60*60*24*7)
+  tokenHeader: Authorization #JWT存储的请求头
+
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /login/**
+      - /code/**
+      - /user/**
+
+#API密钥secretId
+qcloud:
+  secretId:
+#API密钥secretKey
+  secretKey:
+#存储桶所属地域
+  region: ap-guangzhou
+#存储桶空间名称
+  bucketName: demo-1304423007
+#存储桶访问域名
+  url=: https://demo-1304423007.cos.ap-guangzhou.myqcloud.com
+#上传文件前缀路径(eg:/images/)
+  prefix: /images/

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuhao.main.modules.login.dao.PermissionResourceDao">
+
+    <select id="getResourceList" resultType="com.shuhao.main.vo.ElectricalSealPermission">
+        SELECT
+            p.id id,
+            p.permission_code permissionCode,
+            p.permission_name permissionName
+        FROM
+            electrical_seal_user_role ur
+        LEFT JOIN electrical_seal_role r ON ur.role_id = r.id
+        LEFT JOIN electrical_seal_role_permission rp ON r.id = rp.role_id
+        LEFT JOIN electrical_seal_permission p ON p.id = rp.permission_id
+        WHERE
+            ur.user_id = #{userId}
+        AND p.id IS NOT NULL
+        GROUP BY
+            p.id
+    </select>
+
+</mapper>
