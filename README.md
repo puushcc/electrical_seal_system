@@ -2,6 +2,7 @@
 
 #### 说明
 该系统为对集团内部的所有电子章和实体章进行集“ 制作、废除、变更、停用、审计、授权、监控、使用 ”于一体的全生命周期管理的企业印控中台（后端部分）。基于springboot、SpringSecurity、Redis、RabbitMQ、MyBatis等技术。
+vue项目地址：https://github.com/puushcc/electrical-seal-vue.git
 
 #### 系统演示：
 
